@@ -70,7 +70,7 @@ Body:
 Ex: /0xadb2b42f6bd96f5c65920b9ac88619dce4166f94/balance?addressType=1&contractAddress=0xdAC17F958D2ee523a2206206994597C13D831ec7
 ```
 
-- 參數
+- 參數(Query String)
 ```bash
 addressType: 地址類型. 1:erc, 2:trc
 contractAddress: 合約地址
