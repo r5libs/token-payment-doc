@@ -1,4 +1,4 @@
-## API: 交易驗證
+## API 交易驗證
 - 格式
 ```bash
 [POST] /verification
@@ -38,14 +38,17 @@ Body:
 - 後台回調 [POST]
 ```bash
 {
-  addressType: 地址類型. 1:erc, 2:trc
-  contractAddress: 合約地址
-  from: 轉出地址
-  to: 轉入地址
-  amount: 交易量
-  timestamp: 交易時間戳
-  txHash: 交易序號
-  authKey: 認證Key
+  result: {
+    addressType: 地址類型. 1:erc, 2:trc
+    contractAddress: 合約地址
+    from: 轉出地址
+    to: 轉入地址
+    amount: 交易量
+    timestamp: 交易時間戳
+    txHash: 交易序號
+    authKey: 認證Key
+  },
+  status: 'ok'
 }
 
 或
@@ -59,7 +62,7 @@ Body:
 }
 ```
 
-## API: 查詢餘額
+## API 查詢餘額
 - 格式
 ```bash
 [GET] /{ownerAddress}/balance?{addressType}=&{contractAddress}=
@@ -96,7 +99,7 @@ ownerAddress: 錢包地址
 }
 ```
 
-## API: 轉帳交易
+## API 轉帳交易
 - 格式
 ```bash
 [POST] /transaction
