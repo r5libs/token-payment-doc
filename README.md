@@ -55,8 +55,9 @@ Body:
 
 {
   error: {
-    code: 錯誤碼
+    code: 錯誤碼. -1: 檢查交易過程發生錯誤, -2: 提交的交易資料不符
     message: 錯誤訊息
+    txHash: 交易序號
   },
   status: 'error'
 }
