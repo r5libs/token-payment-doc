@@ -44,7 +44,6 @@ Body:
     from: 轉出地址
     to: 轉入地址
     amount: 交易量
-    timestamp: 交易時間戳
     txHash: 交易序號
     authKey: 認證Key
   },
