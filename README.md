@@ -19,7 +19,7 @@ Body:
 }
 ```
 
-- 返回值(JSON)
+- 返回值(JSON)(這是返回給瀏覽器的, 可忽略, 實際以回調為主)
 ```js
 {
   status: 'ok' // 成功
@@ -44,6 +44,7 @@ Body:
 
 {
   result: {
+    code: 錯誤碼. 0: 交易成功
     addressType: 地址類型. 1:erc, 2:trc
     contractAddress: 合約地址
     from: 轉出地址
@@ -59,7 +60,7 @@ Body:
 
 {
   error: {
-    code: 錯誤碼. -1: 交易失敗, -2: 提交的交易資料不符, -3: 檢查交易過程發生錯誤
+    code: 錯誤碼. -1: 交易失敗, -2: 提交的交易資料不符, -3: 交易過程發生錯誤
     message: 錯誤訊息
     txHash: 交易序號
     authKey: 認證Key
