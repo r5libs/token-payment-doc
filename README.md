@@ -1,4 +1,4 @@
-## API 交易驗證
+## API 驗證交易
 - 格式
 ```bash
 [POST] /verification
@@ -35,7 +35,9 @@ Body:
 }
 ```
 
-- 後台回調 [POST]
+- 後台回調
+[POST] callbackUrl
+參數(JSON)
 ```bash
 {
   result: {
@@ -57,12 +59,13 @@ Body:
     code: 錯誤碼. -1: 檢查交易過程發生錯誤, -2: 提交的交易資料不符
     message: 錯誤訊息
     txHash: 交易序號
+    authKey: 認證Key
   },
   status: 'error'
 }
 ```
 
-## API 查詢餘額
+## API 查詢U幣
 - 格式
 ```bash
 [GET] /{ownerAddress}/balance?{addressType}=&{contractAddress}=
@@ -99,7 +102,7 @@ ownerAddress: 錢包地址
 }
 ```
 
-## API 轉帳交易
+## API U幣轉移
 - 格式
 ```bash
 [POST] /transaction
